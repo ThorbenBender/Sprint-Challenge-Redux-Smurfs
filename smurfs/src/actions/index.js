@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { types } from 'util';
 
 /* 
   Action Types Go Here!
@@ -23,6 +24,15 @@ export const SPINNER_OFF = 'SPINNER_OFF';
 export const getSmurfs = () => dispatch => {
   dispatch(spinnerOn);
   axios.get('http://localhost:3333/smurfs')
+    .then(res => {
+      dispatch({ type: GET_SMURFS, payload: res.data })
+      dispatch(spinnerOff);
+    })
+}
+
+export const addSmurf = smurf => dispatch => {
+  dispatch(spinnerOn);
+  axios.post('http://localhost:3333/smurfs', smurf)
     .then(res => {
       dispatch({ type: ADD_SMURF, payload: res.data })
       dispatch(spinnerOff);

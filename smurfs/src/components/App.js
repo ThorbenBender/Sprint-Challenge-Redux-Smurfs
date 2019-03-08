@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getSmurfs, spinnerOn, spinnerOff} from '../actions';
+import { getSmurfs, spinnerOn, spinnerOff, addSmurf } from '../actions';
 import Smurf from './Smurf';
 import SmurfForm from './SmurfForm';
 /*
@@ -28,7 +28,7 @@ class App extends Component {
         {
           this.props.smurfs.map((smurf, idx) => <Smurf key={idx} smurf={smurf} id={idx} />)
         }
-        <SmurfForm add/>
+        <SmurfForm addSmurf={this.props.addSmurf}/>
       </div>
     );
   }
@@ -46,6 +46,7 @@ function mapDispatchToProps(dispatch) {
     getSmurfs,
     spinnerOn,
     spinnerOff,
+    addSmurf,
   }, dispatch)
 }
 

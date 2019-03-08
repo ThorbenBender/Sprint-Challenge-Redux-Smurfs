@@ -23,7 +23,7 @@ export default class SmurfForm extends React.Component {
                 <input type="text" onChange={this.onChangeHandler} name="name" value={this.state.smurfName} placeholder="Name..."></input>
                 <input type="number" onChange={this.onChangeHandler} name="age" value={this.state.smurfAge} placeholder="Age..."></input>
                 <input type="text" onChange={this.onChangeHandler} name="height" value={this.state.smurfHeight} placeholder="Height..."></input>
-                <button type="submit">Submit</button>
+                <button onClick={() => this.props.addSmurf(this.state)}>Submit</button>
             </form>
         )
     }
