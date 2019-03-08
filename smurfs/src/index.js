@@ -4,13 +4,19 @@ import './index.css';
 import App from './components/App';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from  './reducers';
+import { smurf, spinner } from './reducers';
+
+const rootReducer = combineReducers({
+  smurf,
+  spinner,
+})
+
 
 const store = createStore(
   rootReducer, // this is the most basic reducer. A function that returns and object. Replace it.
-  applyMiddleware(/* be sure to throw in the proper middlewares here*/)
+  applyMiddleware(thunk, logger),
 );
 
 ReactDOM.render(
