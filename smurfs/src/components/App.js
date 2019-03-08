@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getSmurfs, spinnerOn, spinnerOff} from '../actions';
+import Smurf from './Smurf';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -23,7 +24,10 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <button onClick={() => console.log(this.props.smurfs[0])}>Click me</button>
+        {
+          this.props.smurfs.map((smurf, idx) => <Smurf key={idx} smurf={smurf} id={idx} />)
+        }
+        <SmurfForm />
       </div>
     );
   }
