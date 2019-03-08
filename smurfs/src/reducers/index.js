@@ -18,18 +18,12 @@ const initialState = {
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
-export function smurf(state = initialState, action) {
+export function smurfs(state = initialState.smurfs, action) {
   switch (action.type) {
     case types.GET_SMURFS:
-      return {
-        ...state,
-        smurfs: action.payload,
-      }
-    // case types.ADD_SMURF:
-    //   return {
-    //     ...state,
-    //       smurf: smurf.concat(action.payload)
-    //   }
+      return action.payload;
+    case types.ADD_SMURF:
+      return state.concat(action.payload);
     default:
       return state;
   }
