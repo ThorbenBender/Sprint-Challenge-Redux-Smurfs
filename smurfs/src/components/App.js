@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getSmurfs, spinnerOn, spinnerOff} from '../actions';
 import Smurf from './Smurf';
+import SmurfForm from './SmurfForm';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -27,7 +28,7 @@ class App extends Component {
         {
           this.props.smurfs.map((smurf, idx) => <Smurf key={idx} smurf={smurf} id={idx} />)
         }
-        <SmurfForm />
+        <SmurfForm add/>
       </div>
     );
   }
